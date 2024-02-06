@@ -4,19 +4,7 @@
     <div class="todo">
       <input type="text" v-model="todo" placeholder="Напишите дело..." />
       <button class="add-button" @click="addTodo">Добавить</button>
-
-      <div v-for="(todo, i) in todos" :key="i">
-        <p>
-          <span class="todo__id">{{ i + 1 }}.</span>
-          <span
-            class="todo__text"
-            :class="{ todo__text_isshow: todo.isDone }"
-            >{{ todo.text }}</span
-          >
-          <input type="checkbox" v-model="todo.isDone" class="todo__check" />
-          <button class="todo__btn" @click="removeTodo(i)">удалить</button>
-        </p>
-      </div>
+      <TodoList :todos="todos" @remove-todo="removeTodo" />
       <hr />
       <p>Список задач: {{ todos.length }}</p>
     </div>
@@ -24,7 +12,11 @@
 </template>
 
 <script>
+import TodoList from "./components/TodoList.vue";
 export default {
+  components: {
+    TodoList,
+  },
   data() {
     return {
       title: "Список дел...",
