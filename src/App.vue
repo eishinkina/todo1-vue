@@ -6,16 +6,18 @@
       <button class="add-button" @click="addTodo">Добавить</button>
       <TodoList :todos="todos" @remove-todo="removeTodo" />
       <hr />
-      <p>Список задач: {{ todos.length }}</p>
+      <TodoTotal :todos="todos" />
     </div>
   </div>
 </template>
 
 <script>
 import TodoList from "./components/TodoList.vue";
+import TodoTotal from "./components/TodoTotal.vue";
 export default {
   components: {
     TodoList,
+    TodoTotal,
   },
   data() {
     return {
