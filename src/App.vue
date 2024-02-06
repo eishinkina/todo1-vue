@@ -35,13 +35,20 @@ export default {
   },
   methods: {
     addTodo() {
+      if (!this.todo) return alert("Введите дело");
       this.todos.push({ text: this.todo, isDone: false });
+      localStorage.setItem("todos", JSON.stringify(this.todos));
       this.todo = "";
     },
     removeTodo(i) {
       console.log(i);
       this.todos.splice(i, 1);
+      localStorage.setItem("todos", JSON.stringify(this.todos));
     },
+  },
+  mounted() {
+    const data = localStorage.getItem("todos");
+    data && (this.todos = JSON.parse(data));
   },
 };
 </script>
@@ -98,14 +105,14 @@ h1 {
   }
 }
 .add-button {
-  padding: 5px 10px; 
-  background-color: #ff4d4d; 
-  border: none; 
-  border-radius: 4px; 
-  color: white; 
-  font-weight: bold; 
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
   margin-left: 10px;
 }
 
