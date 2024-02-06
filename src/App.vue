@@ -5,8 +5,8 @@
       <input type="text" v-model="todo" placeholder="Напишите дело..." />
       <button class="add-button" @click="addTodo">Добавить</button>
       <TodoList :todos="todos" @remove-todo="removeTodo" />
-      <hr />
       <TodoTotal :todos="todos" />
+      <hr />
     </div>
   </div>
 </template>
@@ -58,6 +58,7 @@ h1 {
   padding: 30px;
   outline: 1px solid #000;
   min-height: 500px;
+  margin: 0 auto;
 
   &__id {
     color: red;
